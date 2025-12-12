@@ -1,0 +1,125 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Font variables */
+:root {
+  --title-font: "cofo-raffine", sans-serif;
+  --body-font: "futura-pt", "Futura", Arial, sans-serif;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  background: black;
+  overflow: hidden;
+}
+
+/* Canvas layer */
+#canvas-holder {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+}
+
+/* Feathered vignette */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(0,0,0,0) 40%,
+    rgba(0,0,0,0.6) 72%,
+    rgba(0,0,0,1) 100%
+  );
+  z-index: 2;
+}
+
+/* Centered UI */
+.center-ui {
+  position: fixed;
+  inset: 0;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  padding-top: 6vh;
+  animation: fadeIn 4s ease forwards;
+}
+
+/* Title — unchanged */
+.title {
+  font-family: var(--title-font);
+  font-weight: 300;
+  font-size: clamp(5rem, 12vw, 9rem);
+  letter-spacing: 0.07em;
+  margin-bottom: 0.25rem;
+}
+
+/* Subtitle — LIGHTER */
+.subtitle {
+  font-family: var(--body-font);
+  font-size: 1.6rem;
+  font-weight: 100; /* ↓ lighter */
+  opacity: 0.65;
+  position: relative;
+  top: -4.2rem;
+  margin-bottom: 0.6rem;
+}
+
+/* CTA button — LIGHTER */
+.cta {
+  font-family: var(--body-font);
+  font-weight: 400; /* ↓ lighter than before */
+  display: inline-block;
+  padding: 1.4rem 3.6rem;
+  position: relative;
+  top: -3.5rem;
+  border-radius: 999px;
+  background: white;
+  color: black;
+  text-decoration: none;
+  font-size: 1.2rem;
+  letter-spacing: 0.10em;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.cta:hover {
+  opacity: 0.8;
+  transform: scale(1.03);
+}
+
+/* Bottom line — LIGHTER */
+.bottom-line {
+  position: fixed;
+  bottom: 0.8rem;
+  width: 100%;
+  text-align: center;
+  font-family: var(--body-font);
+  font-size: 1rem;
+  font-weight: 300; /* ↓ lighter */
+  opacity: 0.55;
+  letter-spacing: 0.05em;
+  color: white;
+  z-index: 3;
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
